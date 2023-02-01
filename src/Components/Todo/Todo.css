@@ -12,4 +12,14 @@
     padding: 10px;
     margin-bottom: 10px;
     list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .checkbox{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left:200px
   }
