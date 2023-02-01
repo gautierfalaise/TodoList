@@ -1,0 +1,16 @@
+.list-finished-container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #E6F3FF;
+    border: 1px solid #0077C9;
+    border-radius: 5px;
+  }
+  .list-finished {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+    text-decoration: line-through;
+  }
