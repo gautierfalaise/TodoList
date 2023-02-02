@@ -1,32 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-// createSlice nous permet de fusionner l'action et le reducers. 
-// En gros de fusionner la chose a faire et la méthode qui nous sert a modifier le store
+// Ce code crée un "tranche" pour gérer les tâches dans le magasin Redux.
 export const tasksSlice = createSlice({
-    // son nom :
-    name: "tasks",
-    // son state de base :
+
+    name: "tasks", // Nommez la tranche "tâches".
+
+    // Initialisez l'état de la tranche avec un tableau vide de tâches.
     initialState: {
         tasks: [],
     },
-    // ici toute la logique de nos reducers
-    // A chaque reducers on va lui donner une fonction :
-    // Chaque fonction va etre appelé dans notre interface
-    // par exemple un reducers pour editer, ajouter ou supprimer un élément
+
+    // Définissez les réducteurs qui définissent comment l'état de la tranche est mis à jour en réponse aux actions déclenchées.
     reducers: {
-        /* 
-        Reducer qui va nous permettre d'afficher
-        un article quand on en créé un sans passer par la bdd donc sans
-        recharger la page */
+
+        // addTask ajoutera une nouvelle tâche au tableau de tâches dans l'état de la tranche.
         addTask: (state, { payload }) => {
             state.tasks.push(payload);
-        }
+        },
+
+        // isCheckedTask mettra à jour la tâche correspondante pour la marquer comme cochée.
+        isCheckedTask: (state, { payload }) => {
+            state.tasks = state.tasks.map((task) => {
+                if (task.id === payload) {
+                    // Retournez une copie de la tâche avec la propriété isChecked définie sur vrai.
+                    return {
+                        ...task,
+                        isChecked: true,
+                    };
+                } else {
+                    // Retournez la tâche inchangée.
+                    return task;
+                }
+            });
+        },
     },
 });
 
+// Exportez les actions déclenchées par les réducteurs.
+export const { addTask, isCheckedTask } = tasksSlice.actions;
 
-// ON exporte nos reducers (slices) ainsi que l'objet principal
-export const { addTask } =
-    tasksSlice.actions;
+// Exportez le réducteur créé par la tranche.
 export default tasksSlice.reducer;
+
+
+
