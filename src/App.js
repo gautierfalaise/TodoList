@@ -1,4 +1,4 @@
-mport Form from './Components/Form/Form';
+import Form from './Components/Form/Form';
 import Todo from './Components/Todo/Todo';
 import Finished from './Components/Finished/Finished';
 import './App.css';
@@ -27,3 +27,4 @@ function App() {
 
 // Ce composant est exporté pour être utilisé dans d'autres parties de l'application.
 export default App;
+
